@@ -14,7 +14,7 @@ import com.example.mylabproject2.components.MyTextField
 
 
 @Composable
-fun ForgotPassword(text :String) {
+fun ForgotPassword() {
     Column(modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center)
     {

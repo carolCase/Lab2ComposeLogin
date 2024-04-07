@@ -97,8 +97,8 @@ fun CheckboxComponent(value: String) {
 
 
 @Composable
-fun ButtonComponent(value:String) {
-    Button(onClick = { /*TODO*/ }, modifier = Modifier
+fun ButtonComponent(value:String, onButtonClicked : ()-> Unit) {
+    Button(onClick = { onButtonClicked.invoke() }, modifier = Modifier
         .fillMaxWidth()
         .heightIn(48.dp),
         contentPadding = PaddingValues(),

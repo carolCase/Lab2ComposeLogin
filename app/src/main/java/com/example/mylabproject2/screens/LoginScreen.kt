@@ -47,7 +47,9 @@ fun LoginScreen() {
             Spacer(modifier = Modifier.height(30.dp))
             ClickableTextComponent(value = "Forgot Password")
             Spacer(modifier = Modifier.height(25.dp))
-            ButtonComponent(value = "Login")
+            ButtonComponent(value = "Login", onButtonClicked = {
+                
+            })
 
 
         }

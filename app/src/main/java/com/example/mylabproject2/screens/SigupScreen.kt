@@ -27,7 +27,7 @@ import com.example.mylabproject2.data.LoginViewModel
 import com.example.mylabproject2.data.UIEvent
 
 @Composable
-fun SignUpScreen(loginViewModel: LoginViewModel= viewModel()) {
+fun SignUpScreen(loginViewModel: LoginViewModel = viewModel()) {
     Surface(
         color = Color.White,
         modifier = Modifier
@@ -47,18 +47,20 @@ fun SignUpScreen(loginViewModel: LoginViewModel= viewModel()) {
                 painterResource(id = R.drawable.baseline_account_box_24),
                 onTextSelected = {
                    loginViewModel.onEvent(UIEvent.UserNameChanged(it))
-                })
+                },errorStatus = loginViewModel.registrationUIState.value.userNameError)
 
             PasswordTextField(
                 labelValue = "Enter password", painterResource(id = R.drawable.baseline_password_24),
                 onTextSelected = {
                   loginViewModel.onEvent(UIEvent.PasswordChanged(it))
-                }
+                },errorStatus = loginViewModel.registrationUIState.value.passwordError
             )
-
-
             CheckboxComponent(value = "Accept Privacy Policy and Terms of Use")
-            ButtonComponent(value = "Register")
+
+
+            ButtonComponent(value = "Register", onButtonClicked = {
+                loginViewModel.onEvent(UIEvent.RegisterButton)
+            })
             Spacer(modifier = Modifier.height(30.dp))
             DividerComponent()
         }

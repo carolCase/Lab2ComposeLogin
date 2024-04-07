@@ -5,6 +5,6 @@ open class UIEvent {
     data class UserNameChanged(val userName:String):UIEvent()
     data class PasswordChanged(val password:String):UIEvent()
 
-
+      object RegisterButton : UIEvent()
 
 }

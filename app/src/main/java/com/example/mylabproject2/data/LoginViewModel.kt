@@ -1,38 +1,54 @@
 package com.example.mylabproject2.data
 
-import android.util.Log
+
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import com.google.android.material.tabs.TabLayout.TabGravity
+import com.example.mylabproject2.data.rules.ErrorHandling
+
 
 class LoginViewModel:ViewModel() {
-    private var registrationUIState = mutableStateOf(RegistrationUIState())
-    private val TAG = LoginViewModel::class.simpleName
+    var registrationUIState = mutableStateOf(RegistrationUIState())
+
 
 
 
     fun onEvent(event:UIEvent){
+        ErrorHandlingWithRules()
         when(event){
             is UIEvent.UserNameChanged -> {
                 registrationUIState.value = registrationUIState.value.copy(
                     userName = event.userName
                 )
-                printState()
+
+
             }
             is UIEvent.PasswordChanged -> {
                 registrationUIState.value = registrationUIState.value.copy(
                    password = event.password
                 )
-                printState()
-            }
 
+            }
+            is UIEvent.RegisterButton -> {
+             }
         }
     }
+     private fun ErrorHandlingWithRules(){
+         val userNameResult = ErrorHandling.checkUserName(
+             name = registrationUIState.value.userName
+         )
+         val passwordResult = ErrorHandling.checkPassword(
+             password = registrationUIState.value.password
+         )
+        registrationUIState.value = registrationUIState.value.copy(
+            userNameError = userNameResult.status,
+            passwordError = passwordResult.status
 
-    private fun printState(){
-        Log.d(TAG,"Inside_printState")
-        Log.d(TAG,registrationUIState.value.toString())
-    }
+        )
+     }
+
+
+
+
 
 
 }

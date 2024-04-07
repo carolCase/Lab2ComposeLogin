@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "817657191667",
+    "project_id": "lab2compose-6e11c",
+    "storage_bucket": "lab2compose-6e11c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:817657191667:android:87b02b7e7d63f431d86b86",
+        "android_client_info": {
+          "package_name": "com.example.mylabproject2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDspR2kgpxRxF6QuF_rEDKQyV5uPEB2Fco"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

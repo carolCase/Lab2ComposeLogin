@@ -25,7 +25,9 @@ import androidx.compose.ui.text.input.VisualTransformation
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyTextField(labelValue: String, painterResource: Painter, onTextSelected: (String)-> Unit) {
+fun MyTextField(labelValue: String,
+                painterResource: Painter, onTextSelected: (String)-> Unit,
+                errorStatus:Boolean = false) {
     val textValue = remember { mutableStateOf("") }
 
 
@@ -46,7 +48,8 @@ fun MyTextField(labelValue: String, painterResource: Painter, onTextSelected: (S
         },
         leadingIcon = {
             Icon(painter = painterResource, contentDescription = "")
-        }
+        },
+        isError = !errorStatus
 
     )
 
@@ -58,7 +61,7 @@ fun MyTextField(labelValue: String, painterResource: Painter, onTextSelected: (S
 
 @Composable
 fun PasswordTextField(labelValue: String,painterResource: Painter,onTextSelected: (String) -> Unit
-) {
+,errorStatus: Boolean = false) {
     val password = remember { mutableStateOf("") }
    val passwordVisible = remember {
        mutableStateOf(false)
@@ -82,6 +85,8 @@ fun PasswordTextField(labelValue: String,painterResource: Painter,onTextSelected
         leadingIcon = {
             Icon(painter = painterResource, contentDescription = "")
         },
+        isError = !errorStatus,
+
         trailingIcon = {
             val iconImage = if(passwordVisible.value){
                 Icons.Filled.Visibility
