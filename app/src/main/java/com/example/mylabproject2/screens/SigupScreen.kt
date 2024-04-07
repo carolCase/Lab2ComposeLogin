@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.mylabproject2.R
 import com.example.mylabproject2.components.ButtonComponent
 import com.example.mylabproject2.components.CheckboxComponent
@@ -22,9 +23,11 @@ import com.example.mylabproject2.components.HeadingComponent
 import com.example.mylabproject2.components.TextComponent
 import com.example.mylabproject2.components.MyTextField
 import com.example.mylabproject2.components.PasswordTextField
+import com.example.mylabproject2.data.LoginViewModel
+import com.example.mylabproject2.data.UIEvent
 
 @Composable
-fun SignUpScreen() {
+fun SignUpScreen(loginViewModel: LoginViewModel= viewModel()) {
     Surface(
         color = Color.White,
         modifier = Modifier
@@ -41,11 +44,19 @@ fun SignUpScreen() {
 
             MyTextField(
                 labelValue = "Enter Username",
-                painterResource(id = R.drawable.baseline_account_box_24)
-            )
+                painterResource(id = R.drawable.baseline_account_box_24),
+                onTextSelected = {
+                   loginViewModel.onEvent(UIEvent.UserNameChanged(it))
+                })
+
             PasswordTextField(
-                labelValue = "Enter Password", painterResource(id = R.drawable.baseline_password_24)
+                labelValue = "Enter password", painterResource(id = R.drawable.baseline_password_24),
+                onTextSelected = {
+                  loginViewModel.onEvent(UIEvent.PasswordChanged(it))
+                }
             )
+
+
             CheckboxComponent(value = "Accept Privacy Policy and Terms of Use")
             ButtonComponent(value = "Register")
             Spacer(modifier = Modifier.height(30.dp))

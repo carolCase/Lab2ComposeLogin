@@ -25,9 +25,9 @@ import androidx.compose.ui.text.input.VisualTransformation
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyTextField(labelValue: String, painterResource: Painter) {
+fun MyTextField(labelValue: String, painterResource: Painter, onTextSelected: (String)-> Unit) {
     val textValue = remember { mutableStateOf("") }
-    // var Users by remember { mutableStateOf(listOf("carol", "marcos")) }
+
 
     OutlinedTextField(
         modifier = Modifier.fillMaxWidth(),
@@ -42,6 +42,7 @@ fun MyTextField(labelValue: String, painterResource: Painter) {
 
         onValueChange = {
             textValue.value = it
+            onTextSelected(it)
         },
         leadingIcon = {
             Icon(painter = painterResource, contentDescription = "")
@@ -56,7 +57,8 @@ fun MyTextField(labelValue: String, painterResource: Painter) {
 }
 
 @Composable
-fun PasswordTextField(labelValue: String,painterResource: Painter) {
+fun PasswordTextField(labelValue: String,painterResource: Painter,onTextSelected: (String) -> Unit
+) {
     val password = remember { mutableStateOf("") }
    val passwordVisible = remember {
        mutableStateOf(false)
@@ -75,6 +77,7 @@ fun PasswordTextField(labelValue: String,painterResource: Painter) {
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)  ,
         onValueChange = {
             password.value = it
+            onTextSelected(it)
         },
         leadingIcon = {
             Icon(painter = painterResource, contentDescription = "")

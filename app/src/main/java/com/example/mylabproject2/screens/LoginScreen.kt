@@ -37,9 +37,13 @@ fun LoginScreen() {
         {
             HeadingComponent(value = "Login")
             MyTextField(labelValue = "Enter Username",
-                painterResource(id = R.drawable.baseline_account_box_24) )
+                painterResource(id = R.drawable.baseline_account_box_24), onTextSelected = {
+
+                } )
             PasswordTextField(labelValue = "Enter Password",
-                painterResource(id = R.drawable.baseline_password_24))
+                painterResource(id = R.drawable.baseline_password_24), onTextSelected = {
+
+                })
             Spacer(modifier = Modifier.height(30.dp))
             ClickableTextComponent(value = "Forgot Password")
             Spacer(modifier = Modifier.height(25.dp))

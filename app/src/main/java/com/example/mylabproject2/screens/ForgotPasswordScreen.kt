@@ -19,10 +19,10 @@ fun ForgotPassword(text :String) {
         verticalArrangement = Arrangement.Center)
     {
         Text(text = "Please enter your email to reset password")
-        MyTextField(
+     /*   MyTextField(
             labelValue = "enter email",
             painterResource(id = R.drawable.baseline_email_24)
-        )
+        )*/
     }
     
     
