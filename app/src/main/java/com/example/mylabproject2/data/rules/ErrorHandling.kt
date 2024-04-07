@@ -3,9 +3,9 @@ package com.example.mylabproject2.data.rules
 object ErrorHandling
 {
 
-    fun checkUserName(name:String): HandlingResult{
+    fun checkEmail(email:String): HandlingResult{
         return HandlingResult(
-            (name.isNotEmpty())
+            (email.isNotEmpty())
         )
     }
 
@@ -15,6 +15,8 @@ object ErrorHandling
         )
 
     }
+
+
 
 }
 

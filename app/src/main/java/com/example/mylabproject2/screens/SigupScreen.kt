@@ -37,17 +37,17 @@ fun SignUpScreen(loginViewModel: LoginViewModel = viewModel()) {
     )
     {
         Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center) {
-            TextComponent(value = "Hi' there!!")
+            TextComponent(value = "Be one of us")
             HeadingComponent(value = "Register new account")
 
             Spacer(modifier = Modifier.height(20.dp))
 
             MyTextField(
-                labelValue = "Enter Username",
-                painterResource(id = R.drawable.baseline_account_box_24),
+                labelValue = "Enter Email",
+                painterResource(id = R.drawable.baseline_email_24),
                 onTextSelected = {
-                   loginViewModel.onEvent(UIEvent.UserNameChanged(it))
-                },errorStatus = loginViewModel.registrationUIState.value.userNameError)
+                   loginViewModel.onEvent(UIEvent.EmailChanged(it))
+                },errorStatus = loginViewModel.registrationUIState.value.emailError)
 
             PasswordTextField(
                 labelValue = "Enter password", painterResource(id = R.drawable.baseline_password_24),
@@ -60,7 +60,8 @@ fun SignUpScreen(loginViewModel: LoginViewModel = viewModel()) {
 
             ButtonComponent(value = "Register", onButtonClicked = {
                 loginViewModel.onEvent(UIEvent.RegisterButton)
-            })
+            },isEnabled = loginViewModel.allErrorHandlingPassed.value
+            )
             Spacer(modifier = Modifier.height(30.dp))
             DividerComponent()
         }

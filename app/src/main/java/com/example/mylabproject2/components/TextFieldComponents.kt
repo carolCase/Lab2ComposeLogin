@@ -28,22 +28,22 @@ import androidx.compose.ui.text.input.VisualTransformation
 fun MyTextField(labelValue: String,
                 painterResource: Painter, onTextSelected: (String)-> Unit,
                 errorStatus:Boolean = false) {
-    val textValue = remember { mutableStateOf("") }
+    val email = remember { mutableStateOf("") }
 
 
     OutlinedTextField(
         modifier = Modifier.fillMaxWidth(),
         label = { Text(text = labelValue) },
-        value = textValue.value,
+        value = email.value,
         colors = OutlinedTextFieldDefaults.colors(
             errorTextColor = Color.Red,
             cursorColor = Color.Black,
             focusedBorderColor = Color.DarkGray,
             focusedLabelColor = Color.LightGray
         ),
-
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
         onValueChange = {
-            textValue.value = it
+            email.value = it
             onTextSelected(it)
         },
         leadingIcon = {

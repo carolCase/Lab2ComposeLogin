@@ -97,10 +97,11 @@ fun CheckboxComponent(value: String) {
 
 
 @Composable
-fun ButtonComponent(value:String, onButtonClicked : ()-> Unit) {
+fun ButtonComponent(value:String, onButtonClicked : ()-> Unit, isEnabled : Boolean = false) {
     Button(onClick = { onButtonClicked.invoke() }, modifier = Modifier
         .fillMaxWidth()
         .heightIn(48.dp),
+        enabled = isEnabled,
         contentPadding = PaddingValues(),
         colors = ButtonDefaults.buttonColors(Color.Transparent)
     )
@@ -110,7 +111,8 @@ fun ButtonComponent(value:String, onButtonClicked : ()-> Unit) {
             .heightIn(48.dp)
             .background(
                 brush = Brush.horizontalGradient(colors = listOf(Color.Black, Color.Gray)),
-                shape = RoundedCornerShape(50.dp)
+                shape = RoundedCornerShape(50.dp),
+
             ),
             contentAlignment = Alignment.Center
         )
