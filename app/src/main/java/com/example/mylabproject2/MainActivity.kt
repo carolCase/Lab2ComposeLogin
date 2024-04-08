@@ -9,7 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.example.mylabproject2.app.RegistrationApp
 
-import com.example.mylabproject2.screens.Welcome
+
 import com.example.mylabproject2.ui.theme.MyLabProject2Theme
 
 class MainActivity : ComponentActivity() {

@@ -12,7 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.ClickableText
+
 
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -27,7 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
-import androidx.compose.ui.text.AnnotatedString
+
 
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
@@ -37,6 +37,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.mylabproject2.navigation.Screen
 
 
 @Composable
@@ -98,7 +99,7 @@ fun CheckboxComponent(value: String) {
 
 @Composable
 fun ButtonComponent(value:String, onButtonClicked : ()-> Unit, isEnabled : Boolean = false) {
-    Button(onClick = { onButtonClicked.invoke() }, modifier = Modifier
+    Button(onClick = { onButtonClicked.invoke()}, modifier = Modifier
         .fillMaxWidth()
         .heightIn(48.dp),
         enabled = isEnabled,
@@ -165,7 +166,7 @@ fun ClickableTextComponent(value: String) {
                 fontStyle = FontStyle.Normal),
             textAlign = TextAlign.Center,
             textDecoration = TextDecoration.Underline,
-            modifier = Modifier.clickable {  }
+            modifier = Modifier.clickable { Screen.NavigationRouter.navigateTo(Screen.ForgotPasswordScreen) }
 
             )
     }

@@ -30,7 +30,9 @@ var allErrorHandlingPassed = mutableStateOf(false)
 
             }
             is UIEvent.RegisterButton -> {
+                signUp()
              }
+
         }
     }
      private fun ErrorHandlingWithRules(){
