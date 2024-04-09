@@ -9,6 +9,7 @@ sealed class Screen {
    data object LoginScreen : Screen()
    data object ForgotPasswordScreen: Screen()
     data object WelcomeScreen: Screen()
+    data object HomeScreen: Screen()
 
     object NavigationRouter {
         var currentScreen: MutableState<Screen> = mutableStateOf(Screen.WelcomeScreen)

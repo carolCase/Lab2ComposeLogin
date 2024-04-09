@@ -17,7 +17,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.mylabproject2.R
-import com.example.mylabproject2.app.RegistrationApp
 import com.example.mylabproject2.components.ButtonComponent
 import com.example.mylabproject2.components.CheckboxComponent
 import com.example.mylabproject2.components.DividerComponent
@@ -25,12 +24,12 @@ import com.example.mylabproject2.components.HeadingComponent
 import com.example.mylabproject2.components.TextComponent
 import com.example.mylabproject2.components.MyTextField
 import com.example.mylabproject2.components.PasswordTextField
-import com.example.mylabproject2.data.LoginViewModel
-import com.example.mylabproject2.data.UIEvent
+import com.example.mylabproject2.data.SignUpViewModel
+import com.example.mylabproject2.data.SignUpUIEvent
 import com.example.mylabproject2.navigation.Screen
 
 @Composable
-fun SignUpScreen(loginViewModel: LoginViewModel = viewModel()) {
+fun SignUpScreen(signUpViewModel: SignUpViewModel = viewModel()) {
     Surface(
         color = Color.White,
         modifier = Modifier
@@ -50,22 +49,22 @@ fun SignUpScreen(loginViewModel: LoginViewModel = viewModel()) {
                 labelValue = "Enter Email",
                 painterResource(id = R.drawable.baseline_email_24),
                 onTextSelected = {
-                   loginViewModel.onEvent(UIEvent.EmailChanged(it))
-                },errorStatus = loginViewModel.registrationUIState.value.emailError)
+                   signUpViewModel.onEvent(SignUpUIEvent.EmailChanged(it))
+                },errorStatus = signUpViewModel.signUpUIState.value.emailError)
 
             PasswordTextField(
                 labelValue = "Enter password", painterResource(id = R.drawable.baseline_password_24),
                 onTextSelected = {
-                  loginViewModel.onEvent(UIEvent.PasswordChanged(it))
-                },errorStatus = loginViewModel.registrationUIState.value.passwordError
+                  signUpViewModel.onEvent(SignUpUIEvent.PasswordChanged(it))
+                },errorStatus = signUpViewModel.signUpUIState.value.passwordError
             )
             CheckboxComponent(value = "Accept Privacy Policy and Terms of Use")
 
 
             ButtonComponent(value = "Register", onButtonClicked = {
 
-                loginViewModel.onEvent(UIEvent.RegisterButton)
-            },isEnabled = loginViewModel.allErrorHandlingPassed.value)
+                signUpViewModel.onEvent(SignUpUIEvent.RegisterButton)
+            },isEnabled = signUpViewModel.allErrorHandlingPassed.value)// true
 
 
             Spacer(modifier = Modifier.height(30.dp))

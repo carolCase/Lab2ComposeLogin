@@ -7,13 +7,13 @@ object ErrorHandling
         return HandlingResult(
             (email.isNotEmpty())
         )
-    }
+    } //Toast??
 
     fun checkPassword(password:String) : HandlingResult{
         return HandlingResult(
             (password.isNotEmpty() && password.length>=8)
         )
-
+           //Toast??
     }
 
 

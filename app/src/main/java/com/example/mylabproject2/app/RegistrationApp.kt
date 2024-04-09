@@ -6,9 +6,12 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.example.mylabproject2.data.LoginViewModel
+import com.example.mylabproject2.data.SignUpViewModel
 
 import com.example.mylabproject2.navigation.Screen
 import com.example.mylabproject2.screens.ForgotPassword
+import com.example.mylabproject2.screens.HomeScreen
 import com.example.mylabproject2.screens.LoginScreen
 import com.example.mylabproject2.screens.SignUpScreen
 import com.example.mylabproject2.screens.WelcomeScreen
@@ -27,17 +30,21 @@ fun RegistrationApp() {
               SignUpScreen()
           }
           is Screen.LoginScreen ->{
-              LoginScreen()
+              LoginScreen(LoginViewModel())
           }
           is Screen.ForgotPasswordScreen->{
               ForgotPassword()
           }
-
+          is Screen.HomeScreen->{
+            HomeScreen(SignUpViewModel())
+          }
       }
   }
 
     }
 }
+
+
 
 /*The Crossfade composable is used to animate transitions
 between different states of a UI. It takes two states (targetState and label)

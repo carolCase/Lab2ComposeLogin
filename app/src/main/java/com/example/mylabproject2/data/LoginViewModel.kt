@@ -1,72 +1,74 @@
 package com.example.mylabproject2.data
 
-
+import androidx.compose.material3.NavigationBar
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.example.mylabproject2.data.rules.ErrorHandling
+import com.example.mylabproject2.navigation.Screen
 import com.google.firebase.auth.FirebaseAuth
 
-
-class LoginViewModel:ViewModel() {
-    var registrationUIState = mutableStateOf(RegistrationUIState())
-
-var allErrorHandlingPassed = mutableStateOf(false)
+class LoginViewModel: ViewModel() {
 
 
-    fun onEvent(event:UIEvent){
-        ErrorHandlingWithRules()
+    var loginUIState = mutableStateOf(LoginUIState())
+    var allErrorHandlingPassed = mutableStateOf(false)
+    var loginInProgress = mutableStateOf(false)
+
+    fun onEvent(event:LoginUIEvent){
         when(event){
-            is UIEvent.EmailChanged -> {
-                registrationUIState.value = registrationUIState.value.copy(
+            is LoginUIEvent.EmailChanged ->{
+                loginUIState.value = loginUIState.value.copy(
                     email = event.email
                 )
-
-
             }
-            is UIEvent.PasswordChanged -> {
-                registrationUIState.value = registrationUIState.value.copy(
-                   password = event.password
+
+            is LoginUIEvent.PasswordChanged->{
+              loginUIState.value = loginUIState.value.copy(
+                    password = event.password
                 )
-
             }
-            is UIEvent.RegisterButton -> {
-                signUp()
-             }
 
+            is LoginUIEvent.LoginButton->{
+                login()
+            }
         }
+        errorHandlingWithRules()
     }
-     private fun ErrorHandlingWithRules(){
-         val emailResult = ErrorHandling.checkEmail(
-             email = registrationUIState.value.email
-         )
-         val passwordResult = ErrorHandling.checkPassword(
-             password = registrationUIState.value.password
-         )
-        registrationUIState.value = registrationUIState.value.copy(
+
+    private fun login() {
+        val email = loginUIState.value.email
+        val password = loginUIState.value.password
+       FirebaseAuth
+           .getInstance()
+           .signInWithEmailAndPassword(email,password)
+           .addOnCompleteListener{
+               if(it.isSuccessful){
+                  Screen.NavigationRouter.navigateTo(Screen.HomeScreen)
+               }
+           }
+          /* .addOnFailureListener(){
+
+           }*/
+
+    }
+
+
+
+
+    private fun errorHandlingWithRules(){
+        val emailResult = ErrorHandling.checkEmail(
+            email = loginUIState.value.email
+        )
+        val passwordResult = ErrorHandling.checkPassword(
+            password = loginUIState.value.password
+        )
+        loginUIState.value = loginUIState.value.copy(
             emailError = emailResult.status,
             passwordError = passwordResult.status
 
         )
+        //this variable checks that input is write and makes the button Login
         allErrorHandlingPassed.value =emailResult.status && passwordResult.status
-     }
-private fun signUp(){
-    createUserFirebase(
-        email = registrationUIState.value.email,
-        password =registrationUIState.value.password )
-}
-
-   private fun createUserFirebase(email: String, password : String){
-        FirebaseAuth.getInstance()
-            .createUserWithEmailAndPassword(email,password)
-            .addOnCompleteListener{
-
-            }
-            .addOnFailureListener{
-
-            }
     }
-
-
-
 
 }

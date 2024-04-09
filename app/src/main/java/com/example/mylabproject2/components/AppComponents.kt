@@ -36,7 +36,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.example.mylabproject2.navigation.Screen
 
 
@@ -89,6 +88,7 @@ fun CheckboxComponent(value: String) {
         }
         Checkbox(checked = checkedState.value, onCheckedChange = { newValue ->
             checkedState.value = newValue
+
         })
            
         Text(text = value)
