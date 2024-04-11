@@ -1,6 +1,5 @@
 package com.example.mylabproject2.data
 
-import androidx.compose.material3.NavigationBar
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.example.mylabproject2.data.rules.ErrorHandling

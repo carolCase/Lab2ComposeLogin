@@ -9,5 +9,5 @@ data class SignUpUIState(
 
     var emailError : Boolean = false,
     var passwordError : Boolean = false,
-
+   
 )

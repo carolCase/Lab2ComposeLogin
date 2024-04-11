@@ -11,9 +11,9 @@ object ErrorHandling
 
     fun checkPassword(password:String) : HandlingResult{
         return HandlingResult(
-            (password.isNotEmpty() && password.length>=8)
+            (password.isNotEmpty() && password.length>=6)
         )
-           //Toast??
+           //Toast?? Must have at least six characters
     }
 
 

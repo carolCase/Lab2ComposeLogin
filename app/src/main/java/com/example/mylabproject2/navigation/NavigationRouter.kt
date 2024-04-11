@@ -13,7 +13,7 @@ sealed class Screen {
 
     object NavigationRouter {
         var currentScreen: MutableState<Screen> = mutableStateOf(Screen.WelcomeScreen)
-        fun navigateTo(destination:Screen){
+        fun navigateTo(destination: Screen){
             currentScreen.value = destination
         }
     }

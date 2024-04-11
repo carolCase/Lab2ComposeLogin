@@ -3,7 +3,9 @@ package com.example.mylabproject2.screens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -28,7 +30,11 @@ fun HomeScreen(signUpViewModel: SignUpViewModel) {
     {
         Column(modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Center) {
-            HeadingComponent(value = "Welcome to the Dark Side")
+            HeadingComponent(value = "About Personal Finance Manager")
+            Spacer(modifier = Modifier.height(30.dp))
+
+
+
 
             ButtonComponent(value = "Logout", onButtonClicked = {
                  signUpViewModel.logout()

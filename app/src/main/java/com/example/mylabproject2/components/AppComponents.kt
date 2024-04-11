@@ -86,8 +86,11 @@ fun CheckboxComponent(value: String) {
         val checkedState = remember {
             mutableStateOf(false)
         }
-        Checkbox(checked = checkedState.value, onCheckedChange = { newValue ->
+        Checkbox(checked = checkedState.value,
+            onCheckedChange = {
+                newValue ->
             checkedState.value = newValue
+
 
         })
            
@@ -114,7 +117,7 @@ fun ButtonComponent(value:String, onButtonClicked : ()-> Unit, isEnabled : Boole
                 brush = Brush.horizontalGradient(colors = listOf(Color.Black, Color.Gray)),
                 shape = RoundedCornerShape(50.dp),
 
-            ),
+                ),
             contentAlignment = Alignment.Center
         )
         {
@@ -171,6 +174,8 @@ fun ClickableTextComponent(value: String) {
             )
     }
 }
+
+
 
 
 
